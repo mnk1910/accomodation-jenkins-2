@@ -44,11 +44,11 @@ pipeline{
         }
         
         // Backend tests
-        stage('Backend tests'){
-            steps{
-                sh 'robot -d out-backend --output output-backend.xml /Users/monika/.jenkins/workspace/test-jenkins-pipeline/robotframework-backend/00_Regression_tests.robot'
-            }
-        }
+        //stage('Backend tests'){
+          //  steps{
+            //    sh 'robot -d out-backend --output output-backend.xml /Users/monika/.jenkins/workspace/test-jenkins-pipeline/robotframework-backend/00_Regression_tests.robot'
+            //}
+        //}
         
         // /Users/monika/.jenkins/workspace/test-jenkins-pipeline/robotframework-frontend/00_regression_tests.robot
     }
