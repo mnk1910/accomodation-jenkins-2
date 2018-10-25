@@ -1,13 +1,14 @@
 pipeline{
     agent any
     stages{
-        stage('Hello world!'){
+        stage('Checkout'){
             steps{
-                sh 'echo hello world!'
+                checkout scm
             }
         }
         
-        stage('Hello world2!'){
+        // Building the web app
+        stage('Build web-app'){
             steps{
                 sh 'echo hello world2!'
             }
