@@ -44,12 +44,33 @@ pipeline{
         }
         
         // Backend tests
-        //stage('Backend tests'){
-          //  steps{
-            //    sh 'robot -d out-backend --output output-backend.xml /Users/monika/.jenkins/workspace/test-jenkins-pipeline/robotframework-backend/00_Regression_tests.robot'
-            //}
-        //}
-        
+        stage('Backend tests'){
+            steps{
+                sh 'robot -d out-backend --output output-backend.xml /Users/monika/.jenkins/workspace/test-jenkins-pipeline/robotframework-backend/00_Regression_tests.robot'
+            }
+        }
         // /Users/monika/.jenkins/workspace/test-jenkins-pipeline/robotframework-frontend/00_regression_tests.robot
+        
+        //post actions
+        post { 
+            always { 
+                //Saving the artifacts
+				archiveArtifacts '**/**.war'
+                
+                //Processing the test reports into one
+				sh 'rebot -d output --output out.xml out-backend/output-backend.xml out-frontend/output-frontend.xml'
+                
+				//publishing the robot test results
+                step([
+				    $class : 'RobotPublisher',
+				    outputPath : 'output/',
+				    outputFileName : "*.xml",
+				    disableArchiveOutput : false,
+				    passThreshold : 100,
+				    unstableThreshold: 95.0,
+				    otherFiles : "*.png",
+			    ])
+		    }                     	 	
+        }
     }
 }
