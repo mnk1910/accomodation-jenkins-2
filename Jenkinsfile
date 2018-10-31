@@ -50,7 +50,7 @@ pipeline{
             }
         }
         // /Users/monika/.jenkins/workspace/test-jenkins-pipeline/robotframework-frontend/00_regression_tests.robot
-        
+    }
         //post actions
         post { 
             always { 
@@ -72,5 +72,5 @@ pipeline{
 			    ])
 		    }                     	 	
         }
-    }
+
 }
