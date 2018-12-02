@@ -1,5 +1,5 @@
 *** Settings ***
-Library                                        SeleniumLibrary
+Library                                        Selenium2Library
 Library                                        OperatingSystem
 
 Test Setup                                     Setup
@@ -9,7 +9,6 @@ Test Teardown                                  Teardown
 Setup
     Set Environment Variable                   webdriver.chrome.driver                                     /usr/local/bin/chromedriver    
     Open Browser                               http://localhost:8080/hotel/faces/login/login.xhtml         browser=chrome  
-    Maximize Browser Window  
     Set Selenium Speed                         .2
     Set Selenium Timeout                       30
     Delete All Cookies
